@@ -126,7 +126,7 @@ def send_email(image_detections, number_detections):
 
     # If the email address is gmail
     HOST_ADDRESS = 'smtp.gmail.com'
-    HOST_PORT = 587
+    HOST_PORT = ...
     
     # Connection with the server
     server = smtplib.SMTP(host=HOST_ADDRESS, port=HOST_PORT)
