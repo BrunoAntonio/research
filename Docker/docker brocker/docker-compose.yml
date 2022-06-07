@@ -9,8 +9,8 @@ services:
         image: eclipse-mosquitto
         privileged: true
         ports:
-            - "1883:1883"
-            - "9001:9001"
+            - "...:..."
+            - "...:..."
         volumes: 
             - ./mqtt/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
             - ./mqtt/data:/mosquitto/data
