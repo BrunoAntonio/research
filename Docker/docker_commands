@@ -27,7 +27,7 @@ docker network prune
 ######### brocker image (docker_brocker)
 sudo lsof -i -P -n | grep 1883
 kill -9 <process id>
-hostname -i (172.18.0.2)
+hostname -i (...)
 
 docker-compose up -d
 docker start mqtt
