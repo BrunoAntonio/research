@@ -1,0 +1,48 @@
+######### close ports
+sudo systemctl start mosquitto
+sudo systemctl stop mosquitto
+
+######### steps
+cd /home/pi/Desktop/automatic_monitoring_system_deployment/docker_brocker
+docker-compose up -d
+docker start mqtt
+
+cd /home/pi/Desktop/automatic_monitoring_system_deployment/docker_subscriber
+docker build -t "docker_ams" .
+docker run --network docker_brocker_default -v "$(pwd)/download:/images" docker_ams
+
+
+########## docker management
+docker system df
+
+docker container stop $(docker container ls -aq)
+docker container prune
+docker image prune -a
+docker volume prune
+
+docker network ls
+docker network prune
+
+
+######### brocker image (docker_brocker)
+sudo lsof -i -P -n | grep 1883
+kill -9 <process id>
+hostname -i (172.18.0.2)
+
+docker-compose up -d
+docker start mqtt
+docker stop mqtt
+
+
+######### subscriber image (docker_subscriber)
+docker build -t "docker_ams" .
+docker run -it docker_ams sh
+docker run --network docker_brocker_default -it docker_ams
+
+sudo docker cp d5bebb4fd68d:/images $(pwd)/download
+
+
+######### network between containers
+docker network ls
+docker network inspect docker_brocker_default
+
